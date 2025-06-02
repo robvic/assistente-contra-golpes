@@ -1,0 +1,44 @@
+import functions_framework
+import logging
+from google.cloud import storage
+from google import genai
+
+logging.basicConfig(level=logging.INFO)
+
+PROJECT = "ia-contra-golpes"
+STAGING_BUCKET = "base-golpes-sumarizado"
+storage_client = storage.Client()
+vertex_client = genai.Client(vertexai=True, project=PROJECT, location="global")
+
+@functions_framework.cloud_event
+def process(cloud_event):
+    data = cloud_event.data
+    logging.info(f"Raw event is: {data}")
+    bucket_name = data["bucket"]
+    file_name = data["name"]
+    logging.info(f"Arquivo {file_name} recebido pelo bucket {bucket_name}.")
+
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(file_name)
+    content = blob.download_as_text()
+    logging.info(f"Arquivo {file_name} lido.")
+
+    summary = summarize(content)
+    logging.info(f"Sumário executado.")
+
+    copy(summary, file_name)
+    logging.info(f"Cópia para {STAGING_BUCKET} realizada.")
+
+    return "Done."
+
+def summarize(content):
+    model = "gemini-2.5-flash-preview-05-20"
+    contents = "Faça um resumo em bullet points do conteúdo do texto a seguir: " + content
+    response = vertex_client.models.generate_content(model=model, contents=contents)
+    return response
+
+def copy(content, file_name):
+    bucket = storage_client.bucket(STAGING_BUCKET)
+    blob = bucket.blob(file_name)
+    blob.upload_from_string(content, content_type="text/plain")
+    logging.info(f"Arquivo {file_name} criado no bucket {STAGING_BUCKET}.")
