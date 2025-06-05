@@ -1,2 +1,3 @@
 google-cloud-storage
 google-genai
+PyPDF2==2.11.1

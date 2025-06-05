@@ -10,9 +10,9 @@ def monitor_message():
     while True:
         time.sleep(5)
         x1, y1 = [300,-600]
-        x2, y2 = [1776,-144] # Apenas durante os testes
+        x2, y2 = [1770,-144] # Apenas durante os testes
         #x2, y2 = [745,-144]
-        x3, y3 = [1635,-434] # Apenas durante os testes
+        x3, y3 = [1635,-386] # Apenas durante os testes
         #x3, y3 = [831,-434]
 
         pyautogui.moveTo(x1,y1)
@@ -33,7 +33,7 @@ def monitor_message():
     
 
 def process_message(text):
-    instruction = "Traduza a mensagem a seguir para espanhol, responsa apenas com a tradução: "
+    instruction = "Traduza a mensagem a seguir para espanhol, responda apenas com a tradução: "
     message = instruction + text
     result = querier.send_message(message)
     reply_message("+5521982736561",result)

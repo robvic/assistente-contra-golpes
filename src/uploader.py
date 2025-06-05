@@ -1,5 +1,7 @@
 import functions_framework
 import logging
+import PyPDF2
+import io
 from google.cloud import storage
 from google import genai
 
@@ -19,17 +21,42 @@ def process(cloud_event):
     logging.info(f"Arquivo {file_name} recebido pelo bucket {bucket_name}.")
 
     bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(file_name)
-    content = blob.download_as_text()
+
+    if ".pdf" in file_name:
+        logging.info(f"O arquivo é um PDF.")
+        blob = bucket.blob(file_name)
+        file = blob.download_as_bytes()
+        content = extract_pdf(io.BytesIO(file))
+        file_name_destination = file_name.replace(".pdf", ".txt")
+    elif ".txt" in file_name:
+        logging.info(f"O arquivo é um texto simples.")
+        blob = bucket.blob(file_name)
+        content = blob.download_as_text()
+        file_name_destination = file_name
+    else:
+        logging.info(f"O arquivo não é compatível.")
+        return '', 200
+    
     logging.info(f"Arquivo {file_name} lido.")
 
     summary = summarize(content)
     logging.info(f"Sumário executado.")
 
-    copy(summary, file_name)
+    copy(summary, file_name_destination)
     logging.info(f"Cópia para {STAGING_BUCKET} realizada.")
 
-    return "Done."
+    return '', 200
+
+def extract_pdf(file):
+    pdf_reader = PyPDF2.PdfFileReader(file)
+    
+    content = ""
+    for n in range(pdf_reader.numPages):
+        page = pdf_reader.getPage(n-1)
+        text = page.extract_text()
+        content = content + text
+
+    return content
 
 def summarize(content):
     model = "gemini-2.5-flash-preview-05-20"
