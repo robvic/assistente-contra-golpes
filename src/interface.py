@@ -7,6 +7,8 @@ import querier
 # TO-DO:
 # - Workaround sobre janela de notificações.
 
+CONTENT_PATH = "./data/downloaded"
+
 def monitor_message():
     placeholder = ""
     while True:
@@ -32,10 +34,22 @@ def monitor_message():
             placeholder = text
             process_message(text)
         print(". \n")
+
+def read_files(folder_path):
+    combined_text = ""
     
+    for filename in os.listdir(folder_path):
+        if filename.endswith(".txt"):
+            file_path = os.path.join(folder_path, filename)
+            with open(file_path, 'r', encoding='utf-8') as file:
+                combined_text += file.read() + "\n"
+
+    return combined_text
+
 def process_message(text):
-    instruction = "Traduza a mensagem a seguir para espanhol, responda apenas com a tradução: "
-    message = instruction + text
+    grounding = read_files(CONTENT_PATH)
+    instruction = "Com base nos textos de recomendação a seguir, responda a dúvida ao final."
+    message = instruction + grounding + text
     result = querier.send_message(message)
     reply_message(result)
 

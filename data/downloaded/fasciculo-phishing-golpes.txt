@@ -1,0 +1,100 @@
+Aqui está um resumo do texto em bullet points:
+
+**I. Organizações Mencionadas e Suas Funções:**
+
+*   **CERT.br:**
+    *   Grupo de Resposta a Incidentes de Segurança (CSIRT) de responsabilidade nacional, de último recurso.
+    *   Mantido pelo NIC.br.
+    *   Atua na gestão de incidentes de segurança.
+    *   Promove conscientização sobre segurança, consciência situacional e transferência de conhecimento, com forte integração com comunidades CSIRT.
+*   **NIC.br:**
+    *   Entidade civil de direito privado, sem fins lucrativos.
+    *   Encarregada da operação do domínio .br, distribuição de números IP e registro de Sistemas Autônomos no Brasil.
+    *   Conduz ações e projetos que beneficiam a infraestrutura da Internet no Brasil.
+*   **CGI.br (Comitê Gestor da Internet no Brasil):**
+    *   Responsável por estabelecer diretrizes estratégicas para o uso e desenvolvimento da Internet no Brasil.
+    *   Coordena e integra iniciativas de serviços de Internet no País.
+    *   Promove qualidade técnica, inovação e disseminação de serviços.
+
+**II. Como se Proteger de Phishing e Outros Golpes Online:**
+
+*   **Desenvolva Senso Crítico:**
+    *   Não acredite cegamente em tudo que vê ou recebe na Internet; desconfie.
+    *   Questione a veracidade, mesmo que a informação venha de conhecidos.
+*   **Busque Mais Informações:**
+    *   Cheque a confiabilidade de mensagens e conteúdos.
+    *   Busque informações na fonte oficial, pesquise relatos de golpes semelhantes e converse com amigos/familiares.
+*   **Fique Atento ao Tom da Mensagem (Engenharia Social):**
+    *   Golpistas exploram sentimentos (medo, ganância, caridade, urgência).
+    *   Desconfie de mensagens com ameaças, oportunidades de ganho fácil, promoções exageradas, pedidos de sigilo ou apelo emocional.
+*   **Questione se o Conteúdo Faz Sentido:**
+    *   Verifique se a mensagem é pertinente a você (ex: "tenho conta neste banco?", "o valor da cobrança confere?").
+    *   Observe erros de escrita, que podem indicar fraude.
+*   **Atenção aos Golpes do Dia a Dia (Phishing):**
+    *   Phishing: tipo de fraude que tenta obter informações pessoais/financeiras combinando meios técnicos e engenharia social.
+    *   Suspeite de mensagens sobre temas cotidianos (recadastramento de token, cancelamento de CPF, ofertas de emprego).
+    *   Nunca faça o que a mensagem pede; contate a instituição usando um canal oficial.
+*   **Atenção aos Golpes do Momento:**
+    *   Golpistas exploram temas em destaque (IR, eleições, Copa, Black Friday, desastres, doenças).
+    *   Desconfie de ofertas muito vantajosas ("quando a esmola é demais, o santo desconfia").
+    *   Busque informações apenas em fontes oficiais.
+*   **Não Responda, Denuncie:**
+    *   Responder a mensagens suspeitas confirma que sua conta está ativa.
+    *   Denuncie mensagens, anúncios e perfis maliciosos nas plataformas.
+    *   Bloqueie números/contas que enviam mensagens suspeitas.
+*   **Não Clique em Todos os Links ou QR Codes:**
+    *   Links e QR codes maliciosos podem direcionar para páginas falsas ou instalar malware.
+    *   Analise o contexto; na dúvida, não clique.
+    *   Desconfie de mensagens de "conhecidos"; contate-os por outro meio.
+    *   Só leia QR codes de fontes confiáveis.
+*   **Acesse o Site ou Aplicativo Oficial:**
+    *   Cuidado com páginas e apps falsos.
+    *   Digite o endereço (URL) do site diretamente no navegador.
+    *   Confirme a URL em sites de busca e use conexão segura (HTTPS).
+    *   Instale apenas aplicativos oficiais da instituição.
+*   **Busque o Perfil Oficial das Instituições nas Redes Sociais:**
+    *   Verifique se o perfil é legítimo, procurando por indicativos de "conta verificada".
+*   **Proteja Suas Contas e Senhas:**
+    *   Nunca forneça senhas ou códigos de verificação (incluindo imagens de QR codes).
+    *   Ative a verificação em duas etapas sempre que possível.
+*   **Reduza a Quantidade de Dados Sobre Você:**
+    *   Quanto mais informações você divulga, mais fácil é para golpistas furtarem sua identidade ou adivinharem suas senhas.
+    *   Pense bem antes de publicar e seja seletivo ao aceitar novos contatos.
+
+**III. Cuidados com Operações Bancárias e Compras Online:**
+
+*   **Confirme a Identidade Antes de Fazer Transações Financeiras:**
+    *   Desconfie de pedidos urgentes de dinheiro por amigos/familiares (contas invadidas ou contato alterado).
+    *   Contate a pessoa por outro meio de comunicação para confirmar.
+    *   Confira sempre os dados do recebedor antes de efetivar transações.
+*   **Verifique se o Site ou Loja é Confiável:**
+    *   Pesquise a reputação da empresa e opiniões de clientes em sites de reclamações e redes sociais.
+    *   Prefira sites/lojas conhecidas ou com boas referências.
+    *   Desconfie de preços muito abaixo do mercado.
+*   **Não Aceite Intermediários em Transações de Compra e Venda:**
+    *   Conduza toda a transação somente pela plataforma do anúncio.
+    *   Suspeite de intermediários pedindo sigilo sobre valores.
+*   **Faça Pagamentos Apenas na Plataforma Original da Compra:**
+    *   Não faça pagamentos fora da plataforma da compra (ex: via link enviado por golpista alegando "falha").
+    *   Ao usar cartão de crédito, prefira o cartão virtual.
+    *   Sempre confira o valor antes de autorizar a cobrança.
+
+**IV. O Que Fazer se For Vítima de Golpe:**
+
+*   **Monitore Sua Vida Financeira e Sua Identidade:**
+    *   Ative alertas e monitore extratos de cartões e contas bancárias.
+    *   Contate as instituições envolvidas para esclarecer irregularidades.
+    *   Acompanhe seus registros financeiros junto ao Banco Central (serviço "Registrato").
+    *   Fique atento a sinais de furto de identidade (notificações de crédito, contas/empréstimos não solicitados).
+*   **Faça Boletim de Ocorrência (BO):**
+    *   O BO é um registro policial essencial para se defender, contestar fraudes e acionar seguros.
+    *   Registre caso alguém esteja se passando por você (furto de identidade) ou se tiver prejuízos financeiros.
+*   **Recupere Suas Contas e Troque Suas Senhas:**
+    *   Contas invadidas podem ser porta de entrada para outras fraudes.
+    *   Tente trocar sua senha ou siga os procedimentos de recuperação de acesso da plataforma.
+    *   Denuncie perfis falsos em seu nome e informe seus contatos.
+
+**V. Recursos Adicionais:**
+
+*   **Cartilha de Segurança para Internet:** https://cartilha.cert.br/
+*   **Portal Internet Segura:** https://internetsegura.br/ (material para diferentes públicos)
