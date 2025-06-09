@@ -32,7 +32,7 @@ resource "google_cloud_run_v2_service" "handler-dev" {
 
   template {
     containers {
-      image = "ubuntu/python:3.13"
+      image = "ubuntu/python"
       command = ["/bin/bash", "-c"]
       args = [
         <<-EOT
