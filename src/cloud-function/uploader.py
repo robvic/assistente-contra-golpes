@@ -60,7 +60,7 @@ def extract_pdf(file):
 
 def summarize(content):
     model = "gemini-2.5-flash-preview-05-20"
-    contents = "Faça um resumo em bullet points do conteúdo do texto a seguir: " + content
+    contents = "Faça um resumo em bullet points do conteúdo do texto a seguir, mantenha em cada bullet o detalhamento dos golpes: " + content
     response = vertex_client.models.generate_content(model=model, contents=contents)
     return response
 
