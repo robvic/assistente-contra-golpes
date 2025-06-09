@@ -32,6 +32,9 @@ resource "google_cloudfunctions2_function" "handler-dev" {
 
   build_config {
     runtime = "python313"
+    environment_variables = {
+      GOOGLE_FUNCTION_SOURCE = "src/uploader.py"
+    }
     entry_point = "process"
     source {
       storage_source {
