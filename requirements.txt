@@ -1,5 +1,6 @@
 google-cloud-storage
 google-genai
+openai==1.66.3
 PyPDF2==2.11.1
 PyAutoGUI==0.9.54
 pyperclip==1.8.2

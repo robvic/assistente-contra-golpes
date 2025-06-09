@@ -10,6 +10,8 @@ https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe
 - Instalar WhatsApp Desktop:
 https://get.microsoft.com/installer/download/9NKSQGP7F2NH?cid=website_cta_psi
 - Login no GCP via CLI (*gcloud auth login*)
+- Token do OpenAI nas variáveis de ambiente: (*setx GPT_KEY "token_gerado"*)
+https://platform.openai.com/settings/organization/api-keys
 
 ## Instruções:
 1) Faça o clone deste repositório na máquina local.

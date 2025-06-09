@@ -1,0 +1,10 @@
+include:
+  - local: 'ci/linting.yml'
+  - local: 'ci/terraform.yml'
+
+stages:
+  - linter-check
+  - infra-create
+
+variables:
+  TF_DIR: ${CI_PROJECT_DIR}/terraform
