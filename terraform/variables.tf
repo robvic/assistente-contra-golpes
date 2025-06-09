@@ -27,6 +27,11 @@ variable "email" {
   type        = string
 }
 
+variable "service_account" {
+  description = "SA"
+  type        = string
+}
+
 variable "env" {
   description = "Environment"
   type        = string
