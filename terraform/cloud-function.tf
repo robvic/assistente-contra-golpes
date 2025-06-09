@@ -35,8 +35,8 @@ resource "google_cloudfunctions2_function" "handler-dev" {
     entry_point = "process"
     source {
       storage_source {
-        bucket = google_storage_bucket.temp-handler-code
-        object = google_storage_bucket_object.uploader-code
+        bucket = google_storage_bucket.temp-handler-code.name
+        object = google_storage_bucket_object.uploader-code.name
       }
     }
   }
