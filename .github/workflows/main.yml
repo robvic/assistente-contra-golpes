@@ -43,7 +43,7 @@ jobs:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
       - name: Terraform Init and Apply
         run: |
-          cd $TF_DIR
+          cd terraform/
           terraform init
           terraform plan
           terraform apply -auto-approve
