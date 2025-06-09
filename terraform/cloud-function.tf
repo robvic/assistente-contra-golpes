@@ -26,8 +26,8 @@ resource "google_storage_bucket_object" "uploader-code" {
 #   source_archive_object = google_storage_bucket_object.uploader-code.name
 # }
 
-resource "google_cloud_run_v2_service" "handler" {
-  name     = "handler"
+resource "google_cloud_run_v2_service" "handler-dev" {
+  name     = "handler-dev"
   location = var.region
 
   template {
