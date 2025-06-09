@@ -6,7 +6,7 @@ data "archive_file" "uploader-zip" {
 
 resource "google_storage_bucket_object" "uploader-code" {
   name = "${data.archive_file.uploader-zip.output_path}-${data.archive_file.uploader-zip.output_sha}.zip"
-  bucket = google_storage_bucket.temp.name
+  bucket = google_storage_bucket.temp-handler-code.name
   source = data.archive_file.uploader-zip.output_path
 }
 
