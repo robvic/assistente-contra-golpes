@@ -21,4 +21,5 @@ resource "google_eventarc_trigger" "trigger-bucket-dev" {
   #     topic = google_pubsub_topic.eventarc-dev.id
   #   }
   # }
+  service_account = var.service_account
 }
