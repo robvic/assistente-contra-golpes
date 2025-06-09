@@ -74,9 +74,7 @@ def read_files(folder_path):
 
 def process_message(text):
     grounding = read_files(CONTENT_PATH)
-    instruction = (
-        "Com base nos textos de recomendação a seguir, responda a dúvida ao final."
-    )
+    instruction = open("../data/instructions/whatsapp-instruction.txt", "r").read()
     message = instruction + grounding + text
     logging.info(f"Enviando payload ao GPT...")
     result = querier.send_message(message)

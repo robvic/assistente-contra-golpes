@@ -26,27 +26,51 @@ resource "google_storage_bucket_object" "uploader-code" {
 #   source_archive_object = google_storage_bucket_object.uploader-code.name
 # }
 
-resource "google_cloud_run_v2_service" "handler-dev" {
-  name     = "handler-dev"
+resource "google_cloudfunctions2_function" "handler-dev" {
+  name = "handler-dev"
   location = var.region
 
-  template {
-    containers {
-      image = "ubuntu/python"
-      command = ["/bin/bash", "-c"]
-      args = [
-        <<-EOT
-            curl -o ${google_storage_bucket_object.uploader-code.name}
-            https://storage.googleapis.com/${google_storage_bucket.temp-handler-code.name}/${google_storage_bucket_object.uploader-code.name} &&
-            unzip ${google_storage_bucket_object.uploader-code.name} -d code &&
-            python3 code/uploader.py
-        EOT
-      ]
-      env {
-        name = "PYTHONBUFFERED"
-        value = "1"
+  build_config {
+    runtime = "python313"
+    entry_point = "process"
+    source {
+      storage_source {
+        bucket = google_storage_bucket.temp-handler-code
+        object = google_storage_bucket_object.uploader-code
       }
     }
   }
-  deletion_protection = false
+
+  service_config {
+    max_instance_count = 2
+    min_instance_count = 0
+    available_memory = "512M"
+    timeout_seconds = 60
+    service_account_email = var.service_account
+  }
 }
+
+# resource "google_cloud_run_v2_service" "handler-dev" {
+#   name     = "handler-dev"
+#   location = var.region
+
+#   template {
+#     containers {
+#       image = "ubuntu/python"
+#       command = ["/bin/bash", "-c"]
+#       args = [
+#         <<-EOT
+#             curl -o ${google_storage_bucket_object.uploader-code.name}
+#             https://storage.googleapis.com/${google_storage_bucket.temp-handler-code.name}/${google_storage_bucket_object.uploader-code.name} &&
+#             unzip ${google_storage_bucket_object.uploader-code.name} -d code &&
+#             python3 code/uploader.py
+#         EOT
+#       ]
+#       env {
+#         name = "PYTHONBUFFERED"
+#         value = "1"
+#       }
+#     }
+#   }
+#   deletion_protection = false
+# }
