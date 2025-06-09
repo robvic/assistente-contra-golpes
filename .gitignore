@@ -201,3 +201,6 @@ data/*
 
 # Draw IO configs and backups
 *.bkp
+
+# Secrets
+docs/*.json
