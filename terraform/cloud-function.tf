@@ -20,7 +20,7 @@ resource "google_cloudfunctions_function" "handler" {
   entry_point = "process"
   labels = local.labels
   
-  source_archive_bucket = google_storage_bucket.temp.name
+  source_archive_bucket = google_storage_bucket.temp-handler-code.name
   source_archive_object = google_storage_bucket_object.uploader-code.name
 }
 
@@ -45,7 +45,6 @@ resource "google_cloud_run_v2_service" "handler" {
         value = "1"
       }
     }
-    service_account = google_service_account.eventarc.email
   }
 
   traffic {
