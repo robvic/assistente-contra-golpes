@@ -10,19 +10,21 @@ resource "google_storage_bucket_object" "uploader-code" {
   source = data.archive_file.uploader-zip.output_path
 }
 
-resource "google_cloudfunctions_function" "handler" {
-  name = "handler"
-  runtime = "python313"
-  event_trigger {
-    event_type = "google.pubsub.topic.publish"
-    resource = google_pubsub_topic.eventarc-dev.id
-  }
-  entry_point = "process"
-  labels = local.labels
+# TESTE COM RESOURCE DE CF ANTIGO, NÃO ATIVAR!
+
+# resource "google_cloudfunctions_function" "handler" {
+#   name = "handler"
+#   runtime = "python313"
+#   event_trigger {
+#     event_type = "google.pubsub.topic.publish"
+#     resource = google_pubsub_topic.eventarc-dev.id
+#   }
+#   entry_point = "process"
+#   labels = local.labels
   
-  source_archive_bucket = google_storage_bucket.temp-handler-code.name
-  source_archive_object = google_storage_bucket_object.uploader-code.name
-}
+#   source_archive_bucket = google_storage_bucket.temp-handler-code.name
+#   source_archive_object = google_storage_bucket_object.uploader-code.name
+# }
 
 resource "google_cloud_run_v2_service" "handler" {
   name     = "handler"
@@ -45,10 +47,6 @@ resource "google_cloud_run_v2_service" "handler" {
         value = "1"
       }
     }
-  }
-
-  traffic {
-    percent = 100
   }
   
 }
