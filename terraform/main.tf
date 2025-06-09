@@ -1,5 +1,7 @@
 terraform {
-  backend "http" {
+  backend "gcs" {
+    bucket = "terraform-icg-state"
+    prefix = "env/dev"
   }
   required_providers {
     google = {
