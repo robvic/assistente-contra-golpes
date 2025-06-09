@@ -5,6 +5,7 @@ logging.basicConfig(level=logging.INFO)
 PROJECT = "ia-contra-golpes"
 STAGING_BUCKET = "base-golpes-sumarizado"
 
+
 def download_summaries():
     logging.info(f"Baixando conteúdo sumarizado...")
     storage_client = Client(project=PROJECT)
@@ -20,7 +21,10 @@ def download_summaries():
         if isinstance(result, Exception):
             print("Falha no download {} pelo seguinte motivo: {}".format(name, result))
         else:
-            print("Feito download de {} para {}.".format(name, "data/downloaded/" + name))
+            print(
+                "Feito download de {} para {}.".format(name, "data/downloaded/" + name)
+            )
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     download_summaries()

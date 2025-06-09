@@ -12,6 +12,7 @@ STAGING_BUCKET = "base-golpes-sumarizado"
 storage_client = storage.Client()
 vertex_client = genai.Client(vertexai=True, project=PROJECT, location="global")
 
+
 @functions_framework.cloud_event
 def process(cloud_event):
     data = cloud_event.data
@@ -35,8 +36,8 @@ def process(cloud_event):
         file_name_destination = file_name
     else:
         logging.info(f"O arquivo não é compatível.")
-        return '', 200
-    
+        return "", 200
+
     logging.info(f"Arquivo {file_name} lido.")
 
     summary = summarize(content)
@@ -45,24 +46,30 @@ def process(cloud_event):
     copy(summary, file_name_destination)
     logging.info(f"Cópia para {STAGING_BUCKET} realizada.")
 
-    return '', 200
+    return "", 200
+
 
 def extract_pdf(file):
     pdf_reader = PyPDF2.PdfFileReader(file)
-    
+
     content = ""
     for n in range(pdf_reader.numPages):
-        page = pdf_reader.getPage(n-1)
+        page = pdf_reader.getPage(n - 1)
         text = page.extract_text()
         content = content + text
 
     return content
 
+
 def summarize(content):
     model = "gemini-2.5-flash-preview-05-20"
-    contents = "Faça um resumo em bullet points do conteúdo do texto a seguir, mantenha em cada bullet o detalhamento dos golpes: " + content
+    contents = (
+        "Faça um resumo em bullet points do conteúdo do texto a seguir, mantenha em cada bullet o detalhamento dos golpes: "
+        + content
+    )
     response = vertex_client.models.generate_content(model=model, contents=contents)
     return response
+
 
 def copy(content, file_name):
     bucket = storage_client.bucket(STAGING_BUCKET)
