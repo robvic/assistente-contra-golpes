@@ -1,4 +1,4 @@
-project_id = "ai-contra-golpes"
+project_id = "ia-contra-golpes"
 region     = "southamerica-east1"
 zone       = "southamerica-east1-a"
 email      = "robertovictor.rj1@gmail.com"
