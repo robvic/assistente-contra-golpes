@@ -12,7 +12,7 @@ resource "google_eventarc_trigger" "trigger-bucket-dev" {
   }
   destination {
     cloud_run_service {
-      service = google_cloudfunctions_function.handler.name
+      service = google_cloud_run_v2_service.handler.name
       region  = var.region
     }
   }
