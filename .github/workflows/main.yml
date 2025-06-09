@@ -1,14 +1,13 @@
+---
+
 name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
-  
-env:
-  TF_DIR: ${{ github.workspace }}/terraform
 
 jobs:
   lint:
@@ -36,7 +35,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.12.1
+          terraform_version: 1.5.7
       - name: Authenticate GCP
         uses: google-github-actions/auth@v2
         with:

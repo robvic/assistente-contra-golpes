@@ -1,0 +1,6 @@
+project_id = "ai-contra-golpes"
+region     = "southamerica-east1"
+zone       = "southamerica-east1-a"
+email      = "robertovictor.rj1@gmail.com"
+env        = "env"
+solution   = "ia-contra-golpes"
