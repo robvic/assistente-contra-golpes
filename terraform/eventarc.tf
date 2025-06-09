@@ -16,9 +16,9 @@ resource "google_eventarc_trigger" "trigger-bucket-dev" {
       region  = var.region
     }
   }
-  transport {
-    pubsub {
-      topic = google_pubsub_topic.eventarc-dev.id
-    }
-  }
+  # transport {
+  #   pubsub {
+  #     topic = google_pubsub_topic.eventarc-dev.id
+  #   }
+  # }
 }
