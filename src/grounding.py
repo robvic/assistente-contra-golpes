@@ -3,7 +3,7 @@ from google.cloud.storage import Client, transfer_manager
 
 logging.basicConfig(
     level=logging.INFO,
-    filename="/logs/log.txt",
+    filename="./logs/log.txt",
     encoding="utf-8",
     format="%(asctime)s %(message)s",
 )

@@ -7,7 +7,7 @@ import logging
 
 logging.basicConfig(
     level=logging.INFO,
-    filename="/logs/log.txt",
+    filename="./logs/log.txt",
     encoding="utf-8",
     format="%(asctime)s %(message)s",
 )
@@ -39,11 +39,6 @@ def monitor_message():
             953,
         ]  # Última mensagem (Apenas durante os testes / automensagem)
         # x2, y2 = [675,947] # Última mensagem
-        x3, y3 = [
-            1660,
-            640,
-        ]  # Opção de cópia, no menu de contexto (Apenas durante os testes / automensagem)
-        # x3, y3 = [730,635] # Opção de cópia, no menu de contexto
 
         pyautogui.moveTo(x1, y1)
         pyautogui.click()
@@ -51,9 +46,14 @@ def monitor_message():
         pyautogui.moveTo(x2, y2)
         pyautogui.rightClick()
         time.sleep(1)
-        # pyautogui.moveTo(x3,y3)
-        img_coord = pyautogui.locateCenterOnScreen(reference_image)
-        pyautogui.moveTo(img_coord)
+        try:
+            img_coord = pyautogui.locateCenterOnScreen(reference_image)
+            pyautogui.moveTo(img_coord)
+        except pyautogui.ImageNotFoundException:
+            logging.error(
+                f"Image not found, check if message is of text format or screen is correctly setup."
+            )
+            continue
         time.sleep(1)
         pyautogui.doubleClick()
         time.sleep(1)
