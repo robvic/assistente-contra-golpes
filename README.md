@@ -28,6 +28,6 @@ https://platform.openai.com/settings/organization/api-keys
 - [x] Escrita da resposta com acentuação correta.
 - [x] Externalização das instruções/prompts.
 - [x] IaC.
+- [x] Registro de logs.
 - [ ] Estrtura de testes técnicos.
-- [ ] Registro de logs.
 - [ ] Estrutura de testes de funcionalidade e acurácia.

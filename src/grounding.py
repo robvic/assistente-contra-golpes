@@ -1,7 +1,13 @@
 import logging
 from google.cloud.storage import Client, transfer_manager
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    filename="/logs/log.txt",
+    encoding="utf-8",
+    format="%(asctime)s %(message)s",
+)
+
 PROJECT = "ia-contra-golpes"
 STAGING_BUCKET = "base-golpes-sumarizado"
 

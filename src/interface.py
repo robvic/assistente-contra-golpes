@@ -5,7 +5,12 @@ import pyperclip
 import querier
 import logging
 
-logging.basicConfig(level=logging.INFO, filename="/logs/log.txt", encoding="utf-8", format='%(asctime)s %(message)s')
+logging.basicConfig(
+    level=logging.INFO,
+    filename="/logs/log.txt",
+    encoding="utf-8",
+    format="%(asctime)s %(message)s",
+)
 
 APP_LINK = r"C:\Users\Roberto\Desktop\WhatsApp.lnk"
 CONTENT_PATH = "./data/downloaded"
