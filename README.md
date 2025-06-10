@@ -20,10 +20,14 @@ https://platform.openai.com/settings/organization/api-keys
 4) Execute o código via ponto de entrada: *src/app.py*
 
 ## TO-DO:
-- [ ] Workaround sobre janela de notificações.
-- [ ] Escrita da resposta com acentuação correta.
-- [ ] Externalização das instruções/prompts.
+- [x] Conexão do GPT com WhatsApp.
+- [x] Ingest com sumarização de arquivos txt e pdf.
+- [x] Implantação na máquina local.
+- [x] Pipeline CI.
+- [x] Workaround sobre janela de notificações.
+- [x] Escrita da resposta com acentuação correta.
+- [x] Externalização das instruções/prompts.
+- [x] IaC.
 - [ ] Estrtura de testes técnicos.
-- [ ] IaC.
 - [ ] Registro de logs.
 - [ ] Estrutura de testes de funcionalidade e acurácia.

@@ -74,7 +74,7 @@ def read_files(folder_path):
 
 def process_message(text):
     grounding = read_files(CONTENT_PATH)
-    instruction = open("../data/instructions/whatsapp-instruction.txt", "r").read()
+    instruction = open("data/instructions/whatsapp-instruction.txt", "r").read()
     message = instruction + grounding + text
     logging.info(f"Enviando payload ao GPT...")
     result = querier.send_message(message)
@@ -87,7 +87,9 @@ def reply_message(message):
     pyautogui.moveTo(x4, y4)
     pyautogui.click()
     time.sleep(1)
-    pyautogui.typewrite(message, interval=0.1)
+    # pyautogui.typewrite(message, interval=0.01)
+    pyperclip.copy(message)
+    pyautogui.hotkey("ctrl", "v")
     time.sleep(1)
     pyautogui.press("enter")
     logging.info(f"Sucesso.")

@@ -9,6 +9,7 @@ logging.basicConfig(level=logging.INFO)
 
 PROJECT = "ia-contra-golpes"
 STAGING_BUCKET = "base-golpes-sumarizado"
+INSTRUCTION_BUCKET = "bucket-instructions"
 storage_client = storage.Client()
 vertex_client = genai.Client(vertexai=True, project=PROJECT, location="global")
 
@@ -61,12 +62,17 @@ def extract_pdf(file):
     return content
 
 
+def get_instructions():
+    bucket = storage_client.bucket(INSTRUCTION_BUCKET)
+    blob = bucket.blob("ingest-instructions.txt")
+    instruction = blob.download_as_text()
+    return instruction
+
+
 def summarize(content):
     model = "gemini-2.5-flash-preview-05-20"
-    contents = (
-        "Faça um resumo em bullet points do conteúdo do texto a seguir, mantenha em cada bullet o detalhamento dos golpes: "
-        + content
-    )
+    instruction = get_instructions()
+    contents = instruction + content
     response = vertex_client.models.generate_content(model=model, contents=contents)
     return response
 
