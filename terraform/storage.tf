@@ -29,5 +29,5 @@ resource "google_storage_bucket" "bucket-instructions" {
 resource "google_storage_bucket_object" "object-instructions" {
   name = "ingest-instructions.txt"
   bucket = google_storage_bucket.bucket-instructions.name
-  source = "../data/instructions/ingest-instruction.txt"
+  source = "${path.module}/../data/instructions/ingest-instruction.txt"
 }
