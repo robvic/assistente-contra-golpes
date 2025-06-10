@@ -196,7 +196,7 @@ cython_debug/
 .cursorindexingignore
 
 # Project data folder
-data/*
+data/downloaded/*
 
 # Draw IO configs and backups
 *.bkp
