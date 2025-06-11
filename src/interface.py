@@ -12,8 +12,9 @@ logging.basicConfig(
     format="%(asctime)s %(message)s",
 )
 
-APP_LINK = r"C:\Users\Roberto\Desktop\WhatsApp.lnk"
+APP_LINK = r"C:\Users\Patrick\Desktop\WhatsApp.lnk"
 CONTENT_PATH = "./data/downloaded"
+IMAGE_PATH = "./assets/copy-icon-3.png"
 
 
 def open_interface():
@@ -29,19 +30,19 @@ def open_interface():
 
 def monitor_message():
     logging.info(f"Monitorando mensagens...")
-    reference_image = r"C:\Users\Roberto\OneDrive\Projetos\Assistente Contra Golpes\assets\copy-icon-2.png"
+    reference_image = IMAGE_PATH
     placeholder = ""
     while True:
         time.sleep(5)
         x1, y1 = [235, 195]  # Último contato
-        x2, y2 = [
-            1605,
-            953,
-        ]  # Última mensagem (Apenas durante os testes / automensagem)
-        # x2, y2 = [675,947] # Última mensagem
+        #x2, y2 = [
+        #    1605,
+        #    953,
+        #]  # Última mensagem (Apenas durante os testes / automensagem)
+        x2, y2 = [675,947] # Última mensagem
 
         pyautogui.moveTo(x1, y1)
-        pyautogui.click()
+        pyautogui.doubleClick()
         time.sleep(1)
         pyautogui.moveTo(x2, y2)
         pyautogui.rightClick()
@@ -59,7 +60,7 @@ def monitor_message():
         time.sleep(1)
         text = pyperclip.paste()
 
-        if "[QUERY]" in text and placeholder != text:
+        if placeholder != text:
             logging.info(f"Detectada mensagem com keyword.")
             placeholder = text
             process_message(text)
