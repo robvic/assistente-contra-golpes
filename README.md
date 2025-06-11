@@ -29,5 +29,6 @@ https://platform.openai.com/settings/organization/api-keys
 - [x] Externalização das instruções/prompts.
 - [x] IaC.
 - [x] Registro de logs.
+- [x] Adicionada memória de sessão.
 - [ ] Estrtura de testes técnicos.
 - [ ] Estrutura de testes de funcionalidade e acurácia.

@@ -1,39 +1,51 @@
 import time
+from datetime import datetime, timedelta
 import os
 import pyautogui
 import pyperclip
 import querier
 import logging
 
-logging.basicConfig(
-    level=logging.INFO,
-    filename="./logs/log.txt",
-    encoding="utf-8",
-    format="%(asctime)s %(message)s",
-)
+# Logging configs
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
+console_log = logging.StreamHandler()
+console_log.setLevel(logging.INFO)
+console_log.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
+
+file_log = logging.FileHandler("./logs/log.txt")
+file_log.setLevel(logging.DEBUG)
+file_log.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
+
+logger.addHandler(console_log)
+logger.addHandler(file_log)
+
+# Common vars
 APP_LINK = os.path.join(
     os.path.join(os.environ["USERPROFILE"], "Desktop"), "WhatsApp.lnk"
 )
 CONTENT_PATH = "./data/downloaded"
-IMAGE_PATH = "./assets/copy-icon-3.png"
+IMAGE_PATH = "./assets/copy-icon-2.png"
 
 
 def open_interface():
-    logging.info(f"Abrindo WhatsApp desktop...")
+    logger.info(f"Abrindo WhatsApp desktop...")
 
     path = APP_LINK
     exit_code = os.system(path)
     if exit_code == 1:
-        logging.error("Link do whatsapp não está disponível no caminho especificado.")
+        logger.error("Link do whatsapp não está disponível no caminho especificado.")
     time.sleep(5)
     monitor_message()
 
 
 def monitor_message():
-    logging.info(f"Monitorando mensagens...")
+    logger.info(f"Monitorando mensagens...")
     reference_image = IMAGE_PATH
     placeholder = ""
+    history = []
+    time_check = datetime.now()
     while True:
         time.sleep(5)
         x1, y1 = [235, 195]  # Último contato
@@ -53,8 +65,8 @@ def monitor_message():
             img_coord = pyautogui.locateCenterOnScreen(reference_image)
             pyautogui.moveTo(img_coord)
         except pyautogui.ImageNotFoundException:
-            logging.error(
-                f"Image not found, check if message is of text format or screen is correctly setup."
+            logger.warning(
+                f"Imagem não foi encontrada, pode estar na vez do reply ou a mensagem em questão é incompatível (links, imagens, etc)."
             )
             continue
         time.sleep(1)
@@ -63,14 +75,22 @@ def monitor_message():
         text = pyperclip.paste()
 
         if placeholder != text:
-            logging.info(f"Detectada mensagem com keyword.")
+            logger.info(f"Detectada mensagem nova.")
             placeholder = text
-            process_message(text)
+            if datetime.now() - time_check > timedelta(minutes=5):
+                logger.info(f"Mensagem em nova sessão.")
+                history = []
+                time_check = datetime.now()
+            else:
+                logger.info(f"Mensagem em sessão já existente.")
+                time_check = datetime.now()
+            history = process_message(text, history)
+
         print(".")
 
 
 def read_files(folder_path):
-    logging.info(f"Juntando todos os arquivos de grounding...")
+    logger.info(f"Juntando todos os arquivos de grounding...")
     combined_text = ""
     for filename in os.listdir(folder_path):
         if filename.endswith(".txt"):
@@ -80,17 +100,18 @@ def read_files(folder_path):
     return combined_text
 
 
-def process_message(text):
+def process_message(text, history):
     grounding = read_files(CONTENT_PATH)
     instruction = open("data/instructions/whatsapp-instruction.txt", "r").read()
     message = instruction + grounding + text
-    logging.info(f"Enviando payload ao GPT...")
-    result = querier.send_message(message)
+    logger.info(f"Enviando payload ao GPT...")
+    result, history = querier.send_message(message, history)
     reply_message(result)
+    return history
 
 
 def reply_message(message):
-    logging.info(f"Transmitindo resposta...")
+    logger.info(f"Transmitindo resposta...")
     x4, y4 = [540, 1015]  # Caixa de entrada de texto
     pyautogui.moveTo(x4, y4)
     pyautogui.click()
@@ -100,7 +121,7 @@ def reply_message(message):
     pyautogui.hotkey("ctrl", "v")
     time.sleep(1)
     pyautogui.press("enter")
-    logging.info(f"Sucesso.")
+    logger.info(f"Sucesso.")
 
 
 if __name__ == "__main__":
