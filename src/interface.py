@@ -35,11 +35,11 @@ def monitor_message():
     while True:
         time.sleep(5)
         x1, y1 = [235, 195]  # Último contato
-        #x2, y2 = [
+        # x2, y2 = [
         #    1605,
         #    953,
-        #]  # Última mensagem (Apenas durante os testes / automensagem)
-        x2, y2 = [675,947] # Última mensagem
+        # ]  # Última mensagem (Apenas durante os testes / automensagem)
+        x2, y2 = [675, 947]  # Última mensagem
 
         pyautogui.moveTo(x1, y1)
         pyautogui.doubleClick()
