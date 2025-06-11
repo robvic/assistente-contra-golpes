@@ -12,7 +12,9 @@ logging.basicConfig(
     format="%(asctime)s %(message)s",
 )
 
-APP_LINK = r"C:\Users\Patrick\Desktop\WhatsApp.lnk"
+APP_LINK = os.path.join(
+    os.path.join(os.environ["USERPROFILE"], "Desktop"), "WhatsApp.lnk"
+)
 CONTENT_PATH = "./data/downloaded"
 IMAGE_PATH = "./assets/copy-icon-3.png"
 
