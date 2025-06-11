@@ -92,3 +92,31 @@
 2025-06-10 23:12:27,903 Transmitindo resposta...
 2025-06-10 23:12:30,323 Sucesso.
 2025-06-10 23:12:45,229 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:42:25,235 Abrindo WhatsApp desktop...
+2025-06-10 23:42:30,818 Monitorando mensagens...
+2025-06-10 23:42:43,723 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:42:56,438 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:43:09,311 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:43:21,785 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:43:34,448 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:43:47,111 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:43:59,935 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:44:12,541 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:44:25,724 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:44:38,625 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:44:51,521 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:45:04,102 Detectada mensagem com keyword.
+2025-06-10 23:45:04,102 Juntando todos os arquivos de grounding...
+2025-06-10 23:45:04,105 Enviando payload ao GPT...
+2025-06-10 23:45:39,360 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-10 23:45:39,364 Transmitindo resposta...
+2025-06-10 23:45:41,797 Sucesso.
+2025-06-10 23:45:54,667 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:46:07,466 Image not found, check if message is of text format or screen is correctly setup.
+2025-06-10 23:46:19,868 Detectada mensagem com keyword.
+2025-06-10 23:46:19,868 Juntando todos os arquivos de grounding...
+2025-06-10 23:46:19,871 Enviando payload ao GPT...
+2025-06-10 23:46:48,751 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-10 23:46:48,754 Transmitindo resposta...
+2025-06-10 23:46:51,182 Sucesso.
+2025-06-10 23:47:03,742 Image not found, check if message is of text format or screen is correctly setup.
