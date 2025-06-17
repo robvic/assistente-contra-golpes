@@ -26,7 +26,7 @@ APP_LINK = os.path.join(
     os.path.join(os.environ["USERPROFILE"], "Desktop"), "WhatsApp.lnk"
 )
 CONTENT_PATH = "./data/downloaded"
-IMAGE_PATH = "./assets/copy-icon-2.png"
+IMAGES_PATH = "./assets"
 
 
 def open_interface():
@@ -42,17 +42,13 @@ def open_interface():
 
 def monitor_message():
     logger.info(f"Monitorando mensagens...")
-    reference_image = IMAGE_PATH
     placeholder = ""
     history = []
     time_check = datetime.now()
     while True:
         time.sleep(5)
         x1, y1 = [235, 195]  # Último contato
-        # x2, y2 = [
-        #    1605,
-        #    953,
-        # ]  # Última mensagem (Apenas durante os testes / automensagem)
+        #x2, y2 = [1605, 953]  # Última mensagem (Apenas durante os testes / automensagem)
         x2, y2 = [675, 947]  # Última mensagem
 
         pyautogui.moveTo(x1, y1)
@@ -61,13 +57,11 @@ def monitor_message():
         pyautogui.moveTo(x2, y2)
         pyautogui.rightClick()
         time.sleep(1)
-        try:
-            img_coord = pyautogui.locateCenterOnScreen(reference_image)
+        img_coord = find_image(IMAGES_PATH)
+        if img_coord is  not None:
             pyautogui.moveTo(img_coord)
-        except pyautogui.ImageNotFoundException:
-            logger.warning(
-                f"Imagem não foi encontrada, pode estar na vez do reply ou a mensagem em questão é incompatível (links, imagens, etc)."
-            )
+        else:
+            logger.warning(f"Imagem não foi encontrada, pode estar na vez do reply ou a mensagem em questão é incompatível (links, imagens, etc).")
             continue
         time.sleep(1)
         pyautogui.doubleClick()
@@ -88,6 +82,18 @@ def monitor_message():
 
         print(".")
 
+def find_image(folder):
+    for img in os.listdir(folder):
+        if img.lower().endswith(('.png', '.jpg', '.jpeg')):
+            full_path = os.path.join(folder, img)
+            try:
+                img_coord = pyautogui.locateCenterOnScreen(full_path)
+                logger.info(f"Imagem {img} encontrada na tela.")
+                return img_coord
+            except pyautogui.ImageNotFoundException:
+                logger.warning(f"Imagem {img} não encontrada na tela.")
+                continue
+    return None
 
 def read_files(folder_path):
     logger.info(f"Juntando todos os arquivos de grounding...")
